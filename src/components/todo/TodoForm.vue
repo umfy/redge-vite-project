@@ -3,19 +3,20 @@ import { ref, defineProps, defineEmits } from 'vue'
 import { Todo, TodoClass, useTodoStore } from '../../stores/todo'
 import { useUserStore } from '../../stores/user'
 import ToggleBase from '../design/button/ToggleBase.vue'
-import InputNamed from '../design/input/InputNamed.vue'
+import InputText from '../design/input/InputText.vue'
 import InputSelect from '../design/input/InputSelect.vue'
 import ButtonBase from '../design/button/ButtonBase.vue'
 
-
-const props = withDefaults(defineProps<{
-  todoId: number | null
-}>(), {
-  todoId: undefined,
-})
+const props = withDefaults(
+  defineProps<{
+    todoId: number | null
+  }>(),
+  {
+    todoId: undefined,
+  }
+)
 
 const emit = defineEmits(['submit'])
-
 
 const todoStore = useTodoStore()
 todoStore.fetchTodoList()
@@ -31,10 +32,9 @@ if (props.todoId) {
   formData.value = new TodoClass(todoStore.getTodoById(props.todoId))
 }
 
-function submitTodo(todo: Todo){
-  emit('submit')
-  if(todo.id) {
-    // edit
+function submitTodo(todo: Todo) {
+  emit('submit') // this only closes the dialog
+  if (todo.id) {
     todoStore.editTodo(todo)
     return
   }
@@ -49,7 +49,7 @@ function submitTodo(todo: Todo){
       label="Użytkownik"
       v-model:model-value="formData.userId"
     ></InputSelect>
-    <InputNamed label="Opis" v-model:model-value="formData.title"></InputNamed>
+    <InputText label="Opis" v-model:model-value="formData.title"></InputText>
     <div class="center-content">
       <ToggleBase
         label="Zakończone"

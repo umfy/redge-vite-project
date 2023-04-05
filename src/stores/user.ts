@@ -29,14 +29,14 @@ export interface User {
 
 interface State {
   userList: User[]
-  isFetchingUserList: boolean
+  isLoading: boolean
   hasUserListFetched: boolean
 }
 
 export const useUserStore = defineStore('user', {
   state: (): State => ({
     userList: [],
-    isFetchingUserList: false,
+    isLoading: false,
     hasUserListFetched: false,
   }),
   getters: {
@@ -48,7 +48,7 @@ export const useUserStore = defineStore('user', {
   actions: {
     async fetchUserList() {
       if (this.hasUserListFetched) return
-      this.isFetchingUserList = true
+      this.isLoading = true
       try {
         const result = await fetch('https://jsonplaceholder.typicode.com/users')
         const data = await result.json()
@@ -57,7 +57,7 @@ export const useUserStore = defineStore('user', {
       } catch (error) {
         console.log(error)
       } finally {
-        this.isFetchingUserList = false
+        this.isLoading = false
       }
     },
   },

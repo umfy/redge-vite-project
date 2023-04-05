@@ -31,9 +31,13 @@ userStore.fetchUserList()
       <p class="item-message">{{ props.todo.title }}</p>
 
       <div class="item-buttons">
-        <ButtonBase @click="emit('deleteTodo', props.todo.id || null)">Usuń</ButtonBase>
+        <ButtonBase @click="emit('deleteTodo', props.todo.id || null)"
+          >Usuń</ButtonBase
+        >
         <div class="item-divider"></div>
-        <ButtonBase @click="emit('editTodo', props.todo.id || null)">Edytuj</ButtonBase>
+        <ButtonBase @click="emit('editTodo', props.todo.id || null)"
+          >Edytuj</ButtonBase
+        >
       </div>
     </div>
   </CardBase>

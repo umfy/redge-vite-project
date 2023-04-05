@@ -1,33 +1,33 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, computed, ref } from 'vue';
+import { defineProps, defineEmits, computed, ref } from 'vue'
 
 const props = defineProps<{
-  modelValue: string;
-  label: string;
-}>();
+  modelValue: string
+  label: string
+}>()
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue'])
 const message = computed({
   get: () => props.modelValue,
   set: (value) => emit('update:modelValue', value),
-});
+})
 
-let inputIsFocused = ref(false);
+let inputIsFocused = ref(false)
 </script>
 <template>
-    <div class="label">{{props.label}}</div>
-    <input
-      class="input"
-      type="text"
-      v-model="message"
-      @focus="inputIsFocused = true"
-      @blur="inputIsFocused = false"
-    />
+  <div class="label">{{ props.label }}</div>
+  <input
+    class="input"
+    type="text"
+    v-model="message"
+    @focus="inputIsFocused = true"
+    @blur="inputIsFocused = false"
+  />
 </template>
 
 <style scoped>
 .label {
-    padding-inline: 1rem;
+  padding-inline: 1rem;
 }
 .input {
   width: 100%;
@@ -45,5 +45,4 @@ let inputIsFocused = ref(false);
   border: 2px solid var(--color-primary);
   box-shadow: 0 5px 10px var(--color-shadow-light);
 }
-
 </style>

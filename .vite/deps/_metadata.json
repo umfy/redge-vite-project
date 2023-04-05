@@ -1,0 +1,32 @@
+{
+  "hash": "5771bb0d",
+  "browserHash": "9313b481",
+  "optimized": {
+    "vue": {
+      "src": "../../node_modules/.deno/vue@3.2.47/node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "e6857263",
+      "needsInterop": false
+    },
+    "vue-router": {
+      "src": "../../node_modules/.deno/vue-router@4.1.6/node_modules/vue-router/dist/vue-router.mjs",
+      "file": "vue-router.js",
+      "fileHash": "2a323e87",
+      "needsInterop": false
+    },
+    "pinia": {
+      "src": "../../node_modules/.deno/pinia@2.0.33/node_modules/pinia/dist/pinia.mjs",
+      "file": "pinia.js",
+      "fileHash": "542c7c55",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-T3NQ43ZC": {
+      "file": "chunk-T3NQ43ZC.js"
+    },
+    "chunk-XDP62YWM": {
+      "file": "chunk-XDP62YWM.js"
+    }
+  }
+}

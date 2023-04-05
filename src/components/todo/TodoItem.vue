@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue'
-import { Todo } from '../../stores/todo.ts'
-import { useUserStore } from '../../stores/user.ts'
+import { Todo } from '../../stores/todo'
+import { useUserStore } from '../../stores/user'
 import ButtonBase from '../design/button/ButtonBase.vue'
 import CardBase from '../design/card/CardBase.vue'
 const props = defineProps<{
@@ -9,14 +9,12 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'deleteTodo', id: number): void
-  (e: 'editTodo', id: number): void
+  (e: 'deleteTodo', id: number | null): void
+  (e: 'editTodo', id: number | null): void
 }>()
 
 const userStore = useUserStore()
 userStore.fetchUserList()
-
-function deleteTodo() {}
 </script>
 
 <template>
@@ -33,9 +31,9 @@ function deleteTodo() {}
       <p class="item-message">{{ props.todo.title }}</p>
 
       <div class="item-buttons">
-        <ButtonBase @click="emit('deleteTodo', props.todo.id)">Usuń</ButtonBase>
+        <ButtonBase @click="emit('deleteTodo', props.todo.id || null)">Usuń</ButtonBase>
         <div class="item-divider"></div>
-        <ButtonBase @click="emit('editTodo', props.todo.id)">Edytuj</ButtonBase>
+        <ButtonBase @click="emit('editTodo', props.todo.id || null)">Edytuj</ButtonBase>
       </div>
     </div>
   </CardBase>

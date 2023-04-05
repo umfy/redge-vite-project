@@ -61,3 +61,26 @@ export async function fetchPost(url: string, body: unknown) {
       console.error(`Error fetching data from ${url}: ${error}`)
     }
   }
+
+  export async function fetchPut(url: string, body: unknown) {
+    try {
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      })
+      
+      if (!response.ok) {
+        throw new Error(`Network response was not ok (${response.status})`);
+      }
+      
+      const data = await response.json()
+      
+      return data
+    } catch (error) {
+      console.error(`Error fetching data from ${url}: ${error}`)
+    }
+  }
+  

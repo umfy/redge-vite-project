@@ -45,7 +45,7 @@ watch(isThemeDark, () => {
         </div>
       </li>
       <li class="right-button">
-        <ToggleBase label="Tryb ciemny" v-model="isThemeDark"> </ToggleBase>
+        <ToggleBase label="Tryb ciemny" v-model:model-value="isThemeDark"> </ToggleBase>
       </li>
     </ul>
   </nav>
